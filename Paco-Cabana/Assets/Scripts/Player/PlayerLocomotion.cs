@@ -36,7 +36,7 @@ namespace he
 
             if (Vector3.zero != inputHandler.MoveVector)    // enforces dropping out of tween at end of move
             {
-                Vector3 myPosition = transform.position;
+                Vector3 myPosition = rb.position;
                 Vector3 myMovement = inputHandler.MoveVector.normalized * gridLength;
                 Vector2 targetPosition = new(myPosition.x + myMovement.x, myPosition.y + myMovement.y);
 
