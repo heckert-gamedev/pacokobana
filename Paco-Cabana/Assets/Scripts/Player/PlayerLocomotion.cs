@@ -36,24 +36,15 @@ namespace he
 
             if (Vector3.zero != inputHandler.MoveVector)    // enforces dropping out of tween at end of move
             {
-
-                //rb.DOMove(transform.position + inputHandler.MoveVector, .25f, false);
-                //rb.DOMove(transform.position + (inputHandler.MoveVector * moveSpeed * Time.deltaTime), .25f, true);
                 Vector3 myPosition = transform.position;
                 Vector3 myMovement = inputHandler.MoveVector.normalized * gridLength;
                 Vector2 targetPosition = new(myPosition.x + myMovement.x, myPosition.y + myMovement.y);
-
-
-                //Debug.Log($"moving from {myPosition} by {myMovement}, target is {targetPosition}");
 
                 if (CheckDestinationIsWalkable(targetPosition))
                 {
                     rb.DOMove(targetPosition, .25f, false).OnComplete(AlignPositionToGrid);
                 }
             }
-            //Debug.DrawLine(rb.position, rb.position);
-            //Vector3 myPosition = rb.position;
-            //rb.MovePosition(myPosition + (moveSpeed * Time.deltaTime * inputHandler.MoveVector));
         }
 
 
@@ -61,8 +52,6 @@ namespace he
         {
             TileBase tile = pathWays.GetTile(pathWays.WorldToCell(targetPosition));
             Debug.Log($"tile found at {targetPosition}: {tile?.name}");
-
-            //Bounds bounds = pathWays.GetBoundsLocal(pathWays.WorldToCell(targetPosition));
 
             return pathWays.HasTile(pathWays.WorldToCell(targetPosition));
         }
