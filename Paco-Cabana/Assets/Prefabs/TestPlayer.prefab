@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 3293243051257363263}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8349682318709025018}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 859718343, guid: 6f1354e5af3f9a1e0b8ac835e2321aef, type: 3}
+  m_Sprite: {fileID: -232763459, guid: 6f1354e5af3f9a1e0b8ac835e2321aef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -189,6 +189,13 @@ MonoBehaviour:
   moveSpeed: 1
   gridLength: 1
   pathWays: {fileID: 0}
+  walkabilityMap: {fileID: 0}
+  pathWalkable: {fileID: 11400000, guid: 7136abf280fe414c2ae5b3a76e565ec2, type: 2}
+  pathBlocked: {fileID: 11400000, guid: 618fa8199b6a45125ae2b61348bd5f7f, type: 2}
+  pathExtra: {fileID: 11400000, guid: 5c0cc132b6a0f5e79b204608eb95ca26, type: 2}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &94180914239339853
 MonoBehaviour:
   m_ObjectHideFlags: 0
