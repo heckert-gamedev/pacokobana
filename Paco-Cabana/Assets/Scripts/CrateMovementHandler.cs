@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,8 @@ namespace he
 
         [SerializeField] LayerMask targetsLayerMask;
         [SerializeField] LayerMask cratesLayerMask;
+
+        public event Action ArrivalAction;
 
 
         public bool CheckDestinationCellIsValid(Tilemap map, Vector2 destinationGridPosition) //Vector3 pushDirection, Vector3 callerGridPosition)
@@ -76,6 +79,8 @@ namespace he
                     isPushable = false;
                     transform.DOMove(targetEndPosition, 1.2f, false);
                     collider2D.enabled = false;
+
+                    ArrivalAction?.Invoke();
                 }
 
                 return true;

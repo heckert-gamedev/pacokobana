@@ -46,7 +46,7 @@ namespace he
 
                 if (CheckDestinationIsWalkableAndPushCrate(targetPosition))
                 {
-                    rb.DOMove(targetPosition, .25f, false).OnComplete(AlignPositionToGrid);
+                    rb.DOMove(targetPosition, .15f, false).OnComplete(AlignPositionToGrid);
                 }
             }
         }
