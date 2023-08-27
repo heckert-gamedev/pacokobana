@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace he
 {
@@ -17,6 +18,9 @@ namespace he
 
         [SerializeField] TMP_Text targetsCounterTMP;
         [SerializeField] string targetsCounterBaseString = "Done: ";
+
+        [SerializeField] GameObject hudLevelDonePanel;
+
 
         public int TargetsLeft { get => targetsLeft; }
 
@@ -53,6 +57,7 @@ namespace he
                 targetsLeft = levelTargets.Count;
                 Debug.Log($"{name} awakes with {targetsLeft} targets already assigned");
             }
+            hudLevelDonePanel.SetActive(false);
         }
 
         private void Start()
@@ -69,7 +74,21 @@ namespace he
             //targetsLeft --;
             //targetsCounterTMP.text = string.Format($"{targetsCounterBaseString}{0}", levelTargets.Count - value);
             targetsCounterTMP.text = $"{targetsCounterBaseString}{levelTargets.Count - value}/{levelTargets.Count}";
+
+            if (0 == targetsLeft)
+            {
+                hudLevelDonePanel.SetActive(true);
+                Button quitButton = hudLevelDonePanel.GetComponentInChildren<Button>();
+                quitButton.onClick.AddListener(() => DoQuitCallback());
+            }
         }
 
+
+        //Hack: the whole which class does what thing and how are they connected needs a complete overhaul...
+        public void DoQuitCallback()
+        {
+            GameCoreSceneManager coreSceneManager = FindObjectOfType<GameCoreSceneManager>();
+            coreSceneManager.QuitGame();
+        }
     }
 }
