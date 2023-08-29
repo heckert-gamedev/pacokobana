@@ -43,7 +43,7 @@ namespace he
         private void Awake()
         {
             cachedInitialBlurb = blurbText.text;
-            blurbLoopTexts[0] = blurbText.text;
+            //blurbLoopTexts[0] = blurbText.text;   // all blurb text from the prefab!
             waitForBlurb = new WaitForSeconds(blurbDelay);
         }
 
@@ -74,7 +74,7 @@ namespace he
 
         IEnumerator BlurbLoop()
         {
-            yield return waitForBlurb;
+            yield return waitForFrame;
             while (true) // **Attention** Make sure to yield inside!
             {
                 blurbIndex++;
