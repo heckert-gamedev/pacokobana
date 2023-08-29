@@ -20,12 +20,17 @@ namespace he
 
 
         [Tooltip("Add Blurb Texts to this list")]
+        [TextArea(5, 5)]
         [SerializeField] string[] blurbLoopTexts;
 
+
+        char[] blurbOverwriteString;
+        char[] blurbReplacementString;
 
         int blurbIndex = 0;
 
         WaitForSeconds waitForBlurb = new WaitForSeconds(1f);   // We cannot allow this *not* to be initialized, ever!
+        WaitForEndOfFrame waitForFrame = new WaitForEndOfFrame();   // We cannot allow this *not* to be initialized, ever!
 
         string cachedInitialBlurb;
 
@@ -46,7 +51,8 @@ namespace he
         void Start()
         {
             gameCoreSceneManager = FindObjectOfType<GameCoreSceneManager>();
-            blurbLoopRoutine = StartCoroutine(nameof(BlurbLoop));
+            blurbLoopRoutine = StartCoroutine(BlurbLoop());
+            Debug.Log($"{name} started Coroutine {blurbLoopRoutine}");
         }
 
 
@@ -65,16 +71,48 @@ namespace he
             quitButton.onClick.RemoveListener(() => gameCoreSceneManager.QuitGame());
         }
 
-        IEnumerable BlurbLoop()
+
+        IEnumerator BlurbLoop()
         {
+            yield return waitForBlurb;
             while (true) // **Attention** Make sure to yield inside!
             {
-                blurbIndex += 1 % blurbLoopTexts.Length;
+                blurbIndex++;
+                if (blurbIndex >= blurbLoopTexts.Length)
+                {
+                    blurbIndex = 0;
+                }
+
+                // Immediate replacement
+                //blurbText.text = blurbLoopTexts[blurbIndex];
+
+                // Fancy effect replacement
+
+                blurbOverwriteString = blurbText.text.ToCharArray();
+                blurbReplacementString = blurbLoopTexts[blurbIndex].ToCharArray();
+
+                for (int charIndex = 0; charIndex < blurbOverwriteString.Length; charIndex++)
+                {
+                    blurbOverwriteString[charIndex] = blurbReplacementString[charIndex];
+
+                    blurbText.text = blurbOverwriteString.ArrayToString();
+
+                    // in case the new one is shorter, break off
+                    if (charIndex == blurbReplacementString.Length - 1)
+                    {
+                        // actually not needed if we overwrite the field at the end anyway...
+                        //blurbText.text.Remove(blurbReplacementString.Length);
+                        break;
+                    }
+
+                    yield return waitForFrame;
+                }
+
+                // in case the new one is longer, and to truncate if shorter, just fill it up at the end...
                 blurbText.text = blurbLoopTexts[blurbIndex];
                 yield return waitForBlurb;
             }
 
-            //yield return null;
         }
 
     }
