@@ -217,8 +217,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4284540927
+  m_fontColor: {r: 1, g: 0.90588236, b: 0.3764706, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -642,7 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.90588236, b: 0.3764706, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -755,9 +755,23 @@ MonoBehaviour:
   startButton: {fileID: 4079490655751903483}
   quitButton: {fileID: 3873436895402845812}
   blurbText: {fileID: 4654609810268102226}
-  blurbDelay: 10
+  blurbDelay: 4
   blurbLoopTexts:
-  - dummy
+  - 'Welcome to
+
+    Paco-Cabana.
+
+'
+  - 'Made for the 2023
+
+    <i>Holistic3D
+
+    Game Jam</i>
+
+    themed
+
+    "Classics
+    reimagined"'
   - 'It''s your first
 
     day as a SPA
@@ -790,6 +804,14 @@ MonoBehaviour:
 
     some
     training.'
+  - 'Free Copyright Music by
+
+    @Top Flow Production:
+
+
+    https://clc.to/tropical-beach
+
+'
   - Hit 'Start' to begin
 --- !u!1 &3798993913264803237
 GameObject:
@@ -1004,7 +1026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.90588236, b: 0.3764706, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1260,7 +1282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.90588236, b: 0.3764706, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1610,9 +1632,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '"Training Day" Jam edition
+  m_text: '"Training Day" Jam edition (no hazards, sorry)
 
-    Made by heckert'
+    Made by <b>heckert</b>
+    in August 2023'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 626c5d48309950970a4cacdc1ca59c7f, type: 2}
   m_sharedMaterial: {fileID: -669394291415403687, guid: 626c5d48309950970a4cacdc1ca59c7f, type: 2}

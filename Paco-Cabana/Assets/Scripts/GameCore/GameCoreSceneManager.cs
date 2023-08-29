@@ -38,6 +38,14 @@ namespace he
         public void LoadMainScene()
         {
             SceneManager.LoadScene(1);
+            AudioManager audioManager;
+            Debug.Log($"{name} loaded game scene, tries to get audioManager");
+            if (audioManager = transform.parent.GetComponentInChildren<AudioManager>())
+            {
+                Debug.Log($"{name} successfully got audioManager {audioManager}");
+                audioManager.AudioStopped = false;
+            }
+
         }
 
 

@@ -77,10 +77,15 @@ namespace he
 
             if (0 == targetsLeft)
             {
-                hudLevelDonePanel.SetActive(true);
-                Button quitButton = hudLevelDonePanel.GetComponentInChildren<Button>();
-                quitButton.onClick.AddListener(() => DoQuitCallback());
+                Invoke(nameof(ShowGameFinishedPanel), 5f);
             }
+        }
+
+        private void ShowGameFinishedPanel()
+        {
+            hudLevelDonePanel.SetActive(true);
+            Button quitButton = hudLevelDonePanel.GetComponentInChildren<Button>();
+            quitButton.onClick.AddListener(() => DoQuitCallback());
         }
 
 
