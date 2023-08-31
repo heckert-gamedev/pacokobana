@@ -1,0 +1,1 @@
+zip -vr ../$( basename $(pwd) ) *
